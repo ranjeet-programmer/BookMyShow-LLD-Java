@@ -3,8 +3,11 @@ package com.example.bookmyshow.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,8 +23,8 @@ public class Ticket extends  BaseModel{
     @ManyToOne
     private Show show;
 
-    @ManyToOne
-    private ShowSeat showSeat;
+    @OneToMany(mappedBy = "ticket")
+    private List<ShowSeat> showSeat;
 
     private TicketStatus status;
 }
